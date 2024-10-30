@@ -2,6 +2,7 @@
 crypto price tracker in JS with api coinbase
 
 ## usage: 
+
 ---
 ### in html file
 ```html
