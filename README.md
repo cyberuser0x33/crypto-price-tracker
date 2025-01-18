@@ -35,7 +35,7 @@ document.addEventListener(“DOMContentLoaded”,() =>{});
 ### CDN: 
 
 ```
-https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@main/crypto-price-tracker.js
+https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@abececf6423acabb4d3491a5fc960b19b86099f2/crypto-price-tracker.js
 ```
 ---
 ### original api:
