@@ -18,10 +18,10 @@
 <h3>CDN</h3>
 
 ```
-https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@main/crypto-price-tracker.js
+https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@abececf/crypto-price-tracker.js
 ```
 ```html
-<script src="https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@main/crypto-price-tracker.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@abececf/crypto-price-tracker.js"></script>
 ```
 <br>
 <h2>Basic Usage:</h2>
