@@ -1,6 +1,6 @@
 <div align="center">
 	<br>
-	<img border=0 src="https://www.svgrepo.com/show/428658/ethereum-crypto-cryptocurrency-2.svg" height="250">
+	<img border=0 src="https://www.svgrepo.com/show/428658/ethereum-crypto-cryptocurrency-2.svg" height="200">
 </div>
 <h1 align="center">JS crypto price tracker library</h1>
 <p align="center">
