@@ -26,16 +26,19 @@ https://cdn.jsdelivr.net/gh/cyberuser0x33/crypto-price-tracker@abececf/crypto-pr
 <br>
 <h2>Basic Usage:</h2>
 
-* <h4>To track cryptocurrency prices:</h4>
+* <h4>To track cryptocurrency prices (Now supports any HTML tag):</h4>
 
 ```html
 <span id="price-{cryptocurrency}-{currency}"></span>
+<p id="price-BTC-USD"></p>
+<div id="price-ETH-EUR"></div>
 ```
 example:
 
 ```html
 <span id="price-BTC-USD"></span>
 <span id="price-ETH-EUR"></span>
+<span id="price-XMR-USD"></span> <!-- XMR only supported in USD -->
 ```
 
 * <h4>To track token prices by contract:</h4>
@@ -56,58 +59,73 @@ example:
 
 ```javascript
 CryptoPriceTracker.configure({
-    delay: 2000,           // Update price interval in milliseconds
+    delay: 120000,          // Update price interval (min 120,000ms / 120s)
     autoInitialize: true  // Automatic initialization
 });
 ```
+> [!NOTE]
+> The minimum update interval is fixed at **120 seconds** to ensure reliable data from various APIs.
+
 <h3>Supported Networks</h3>
 <table>
-        <tr>
-            <th>ID Syntax</th>
-            <th>Network</th>
-        </tr>
-        <tr><td>ton</td><td>TON</td></tr>
-        <tr><td>sol</td><td>Solana</td></tr>
-        <tr><td>eth</td><td>Ethereum</td></tr>
-        <tr><td>bsc</td><td>BNB Smart Chain</td></tr>
-        <tr><td>tron</td><td>TRON</td></tr>
-        <tr><td>avalanche</td><td>Avalanche</td></tr>
-        <tr><td>ethc</td><td>Ethereum Classic</td></tr>
-        <tr><td>arb</td><td>Arbitrum</td></tr>
-        <tr><td>celo</td><td>Celo</td></tr>
-        <tr><td>op</td><td>Optimism</td></tr>
-        <tr><td>evmos</td><td>Evmos</td></tr>
-        <tr><td>arbn</td><td>Arbitrum Nova</td></tr>
-        <tr><td>apt</td><td>Aptos</td></tr>
+    <tr><th>ID Syntax</th><th>Network</th></tr>
+    <tr><td>ton</td><td>TON</td></tr>
+    <tr><td>sol</td><td>Solana</td></tr>
+    <tr><td>eth</td><td>Ethereum</td></tr>
+    <tr><td>bsc</td><td>BNB Smart Chain</td></tr>
+    <tr><td>tron</td><td>TRON</td></tr>
+    <tr><td>avalanche</td><td>Avalanche</td></tr>
+    <tr><td>ethc</td><td>Ethereum Classic</td></tr>
+    <tr><td>arb</td><td>Arbitrum</td></tr>
+    <tr><td>celo</td><td>Celo</td></tr>
+    <tr><td>op</td><td>Optimism</td></tr>
+    <tr><td>evmos</td><td>Evmos</td></tr>
+    <tr><td>arbn</td><td>Arbitrum Nova</td></tr>
+    <tr><td>apt</td><td>Aptos</td></tr>
+    <tr><td>base</td><td>Base</td></tr>
+    <tr><td>polygon</td><td>Polygon POS</td></tr>
+    <tr><td>ftm</td><td>Fantom</td></tr>
+    <tr><td>zksync</td><td>zkSync Era</td></tr>
+    <tr><td>sui</td><td>Sui</td></tr>
+    <tr><td>linea</td><td>Linea</td></tr>
+    <tr><td>blast</td><td>Blast</td></tr>
+    <tr><td>scroll</td><td>Scroll</td></tr>
+    <tr><td>mantle</td><td>Mantle</td></tr>
+    <tr><td>gnosis</td><td>Gnosis (xDai)</td></tr>
+    <tr><td>cro</td><td>Cronos</td></tr>
+    <tr><td>manta</td><td>Manta Pacific</td></tr>
+    <tr><td>mode</td><td>Mode</td></tr>
+    <tr><td>zkEVM</td><td>Polygon zkEVM</td></tr>
+    <tr><td>core</td><td>Core</td></tr>
+    <tr><td>filecoin</td><td>Filecoin</td></tr>
+    <tr><td>ronin</td><td>Ronin</td></tr>
+    <tr><td>kava</td><td>Kava</td></tr>
+    <tr><td>metis</td><td>Metis</td></tr>
 </table>
+*(And many more from GeckoTerminal)*
+
 <br>
 <h2>Advanced Usage:</h2>
 
 ```javascript
 const tracker = CryptoPriceTracker.configure({
     autoInitialize: false,
-    delay: 2000
+    delay: 120000
 });
 tracker.initializeElements().start();
-```
-<h3>Or</h3>
 
-```javascript
-const tracker = CryptoPriceTracker.configure({
-    autoInitialize: false,
-    delay: 2000
-});
-
-tracker.initializeElements()
-    .onPriceUpdate(updates => {
-    console.log('Prices updated:', updates);
-}).start();
+// Programmatic access
+tracker.getPrice('BTC-USD').then(price => console.log('Current BTC:', price));
 ```
 <h3>Methods</h3>
     <table>
         <tr>
             <th>Method</th>
             <th>Description</th>
+        </tr>
+        <tr>
+            <td>getPrice(query)</td>
+            <td>Get price programmatically (returns Promise)</td>
         </tr>
         <tr>
             <td>configure(options)</td>
@@ -117,26 +135,7 @@ tracker.initializeElements()
             <td>initializeElements()</td>
             <td>Initialize elements</td>
         </tr>
-        <tr>
-            <td>start()</td>
-            <td>Start price updates</td>
-        </tr>
-        <tr>
-            <td>stop()</td>
-            <td>Stop price updates</td>
-        </tr>
-        <tr>
-            <td>onPriceUpdate(callback)</td>
-            <td>Add price update handler</td>
-        </tr>
-        <tr>
-            <td>offPriceUpdate(callback)</td>
-            <td>Remove price update handler</td>
-        </tr>
-        <tr>
-            <td>clearCache()</td>
-            <td>Clear price cache</td>
-        </tr>
+        ...
 </table>
 <br>
 <h3>Price Formatting</h3>
@@ -149,3 +148,4 @@ tracker.initializeElements()
 
 ## License
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
